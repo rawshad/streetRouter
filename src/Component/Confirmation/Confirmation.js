@@ -1,23 +1,24 @@
-import React from 'react';
-import { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useContext } from 'react';
 import { useParams } from 'react-router';
 import { UserContext } from '../../App';
-import SelectedCommute from '../SelectedCommute/SelectedCommute';
+import details from '../../data/data.json';
 
 
 const Confirmation = () => {
-    const {type} = useParams();
-    const [info, setInfo] = useContext(UserContext);
-    useEffect(() => {
-        setInfo(type);
-    }, [type]);
-    console.log(type, info);
-    return (
-        <div>
-            <SelectedCommute></SelectedCommute>
-        </div>
-    );
+  const { type } = useParams();
+  const [info, setInfo] = useState([]);
+  useEffect(() => {
+    setInfo(details);
+  }, []);
+  const selectedData = info.find(information => information.type === type);
+  console.log('confirmation', selectedData);
+  return (
+    <div>
+      <h1>Confirmation {selectedData.id}</h1>
+      <img src={selectedData.img} alt="" />
+    </div>
+  );
 };
 
 export default Confirmation;

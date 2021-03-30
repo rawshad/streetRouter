@@ -1,11 +1,11 @@
 import React from 'react';
 
+
 const SelectedCommute = (props) => {
-    const {type, img} = props.info;
+    const {img, price, type} = props.info;
     return (
         <div>
-            <img src={img} alt={type}/>
-            <img src={img} alt={type}/>
+            <h1>price: {price}</h1>
             <img src={img} alt={type}/>
         </div>
     );
